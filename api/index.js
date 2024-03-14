@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGO)
 .then(()=>{
   console.log("db conected sucsessfully")
 })
-.catch(()=>{
+.catch((error)=>{
   console.log(error)
 })
 
