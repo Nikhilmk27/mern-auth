@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 import userRout from './routs/user.route.js';
+import authRout from './routs/auth.rout.js'
 dotenv.config()
 
 mongoose.connect(process.env.MONGO)
@@ -13,8 +14,11 @@ mongoose.connect(process.env.MONGO)
 })
 
 const app = express();
+// Middleware to parse JSON data
+app.use(express.json());
 
 app.use("/api/user",userRout)
+app.use("/api/auth",authRout)
 
 
 
