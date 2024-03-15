@@ -20,6 +20,16 @@ app.use(express.json());
 app.use("/api/user",userRout)
 app.use("/api/auth",authRout)
 
+// error handling middle weare
+app.use((err,req,res,next) => {
+  const statuscode = err.statuscode || 500;
+ const  message = err.message || 'internal server error'
+  return res.status(statuscode).json({
+    sucess:false,
+    message,
+    statuscode
+  })
+})
 
 
 app.listen(3000, () => {
