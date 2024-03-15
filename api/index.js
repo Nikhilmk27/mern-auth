@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+import userRout from './routs/user.route.js';
 dotenv.config()
 
 mongoose.connect(process.env.MONGO)
@@ -12,6 +13,8 @@ mongoose.connect(process.env.MONGO)
 })
 
 const app = express();
+
+app.use("/api/user",userRout)
 
 
 
